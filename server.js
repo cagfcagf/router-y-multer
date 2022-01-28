@@ -51,10 +51,13 @@ app.post('/', function(req,res,next){
 })
 
 app.put('/:id', function(req,res,next){
-        
-    productsArray = arrayRemove(productsArray, req.params.id);
-    const productAdd = req.body
-    productsArray.push({...productAdd, "id": req.params.id})
+    
+    const id = req.params.id - 1
+    productsArray[id].title = req.body.title
+    productsArray[id].price = req.body.price
+    productsArray[id].thumbnail = req.body.thumbnail
+
+
     res.send(productsArray)
 })
 
